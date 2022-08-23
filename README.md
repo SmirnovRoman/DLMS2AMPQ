@@ -21,26 +21,26 @@ dump replies from out queue
 ### Configuration json
 
 > {
-> "HostName": "172.17.230.131",  // hostname of RabbitMQ server  
-> "Port": 5672, // port of RabbitMQ server
->  "VirtualHost": "HEX", // virtual host on RabbitMQ server
->  "UserName": "adm", // user name used to access of RabbitMQ server
->  "Password": "test", // password used to access of RabbitMQ server
->  "DebugFile": "log.txt",   // Debug file
->  "InQueue": "INDLMS", // Queue on server which is monitored for incoming commands
->  "OutQueue": "OUTDLMS" // Queue on server where data are put
+> "HostName": "172.17.230.131",  // hostname of RabbitMQ server    
+> "Port": 5672, // port of RabbitMQ server  
+>  "VirtualHost": "HEX", // virtual host on RabbitMQ server  
+>  "UserName": "adm", // user name used to access of RabbitMQ server  
+>  "Password": "test", // password used to access of RabbitMQ server  
+>  "DebugFile": "log.txt",   // Debug file  
+>  "InQueue": "INDLMS", // Queue on server which is monitored for incoming commands  
+>  "OutQueue": "OUTDLMS" // Queue on server where data are put  
 > }
 
 
 ### Format of message with commands
 
 > {
->  "MsgID": "1443", // - unique message id - will be put into reply
->  "Cmd": "READ", // command - at the moment only READ supported
->  "ObisCode": "1.0.99.1.0.255", // - OBIS code to request
->  "ConnectionString": "-h 127.0.0.1 -p 4060 -c 32 -a Low -i WRAPPER -P 00000000", // connection string in format described below
->  "dtFrom": "2022-08-17T18:01:57.9123297+03:00", // data from 
->  "dtTo": "2022-08-22T18:01:57.9269498+03:00" // data to
+>  "MsgID": "1443", // - unique message id - will be put into reply  
+>  "Cmd": "READ", // command - at the moment only READ supported  
+>  "ObisCode": "1.0.99.1.0.255", // - OBIS code to request  
+>  "ConnectionString": "-h 127.0.0.1 -p 4060 -c 32 -a Low -i WRAPPER -P 00000000", // connection string in format described below  
+>  "dtFrom": "2022-08-17T18:01:57.9123297+03:00", // data from     
+>  "dtTo": "2022-08-22T18:01:57.9269498+03:00" // data to  
 > }
 
 
@@ -49,31 +49,31 @@ dump replies from out queue
 > {
 >  "InMsgID": "1443", // - request message id 
 >  "MsgID": "ba21630b-07af-43b1-b286-54b94f61b268", // unique message id of reply 
->  "Status": "ok", // statu - ok or notok
->  "Error": "", // description of error in GURUX lib
->  "DataRecords": [ // data records
->    {
->      "DateTime": "12/15/2020 9:00:00.010 PM",
->      "Code": "0",  // obis code
->      "Value": "1134573"
->    },   
->    {
->      "DateTime": "12/15/2020 12:00:00.010 AM",
->      "Code": "0",
->      "Value": "1058976"
->    }
->  ]
-> }
+>  "Status": "ok", // statu - ok or notok  
+>  "Error": "", // description of error in GURUX lib  
+>  "DataRecords": [ // data records  
+>    {  
+>      "DateTime": "12/15/2020 9:00:00.010 PM",  
+>      "Code": "0",  // obis code  
+>      "Value": "1134573"  
+>    },     
+>    {  
+>      "DateTime": "12/15/2020 12:00:00.010 AM",   
+>      "Code": "0",  
+>      "Value": "1058976"  
+>    }  
+>  ]  
+> }  
 
 ### Example of error message 
 
-> {
->  "InMsgID": "1443",
->  "MsgID": "344eb4be-6e2e-4e9f-8c52-f41e8fef90fc",
->  "Status": "notok",
->  "Error": "Connection is permanently rejected. Authentication failure.",
->  "DataRecords": []
-> }
+> {  
+>  "InMsgID": "1443",  
+>  "MsgID": "344eb4be-6e2e-4e9f-8c52-f41e8fef90fc",  
+>  "Status": "notok",  
+>  "Error": "Connection is permanently rejected. Authentication failure.",  
+>  "DataRecords": []  
+> }  
 
 ## Connection settings (parameter ConnectionString in request command )
 
@@ -114,13 +114,13 @@ dump replies from out queue
              -f  HDLC Frame size. Default is 128
              -L  Manufacturer ID (Flag ID) is used to use manufacturer depending functionality. -L LGZ            
             
->            Examples:
-            Read LG device using TCP/IP connection.
-            -r SN -c 16 -s 1 -h [Meter IP Address] -p [Meter Port No]
-            Read LG device using serial port connection.
-            -r SN -c 16 -s 1 -sp COM1
-            Read Indian device using serial port connection.
-            -S COM1 -c 16 -s 1 -a Low -P [password]
+>            Examples:  
+            Read LG device using TCP/IP connection.    
+            -r SN -c 16 -s 1 -h [Meter IP Address] -p [Meter Port No]  
+            Read LG device using serial port connection.  
+            -r SN -c 16 -s 1 -sp COM1  
+            Read Indian device using serial port connection.  
+            -S COM1 -c 16 -s 1 -a Low -P [password]  
 
 ## Load tests
 
@@ -136,25 +136,25 @@ dump replies from out queue
 
 2. Setup configuration for DLMS2AMPQ
 
-> {
->  "HostName": "172.17.230.131",  // hostname of RabbitMQ server
->  "Port": 5672, // port of RabbitMQ server
->  "VirtualHost": "HEX", // virtual host on RabbitMQ server
->  "UserName": "adm", // user name used to access of RabbitMQ server
->  "Password": "test", // password used to access of RabbitMQ server
->  "DebugFile": "log.txt",   // Debug file
->  "InQueue": "INDLMS", // Queue on server which is monitored for incoming commands
->  "OutQueue": "OUTDLMS" // Queue on server where data are put
+> {  
+>  "HostName": "172.17.230.131",  // hostname of RabbitMQ server  
+>  "Port": 5672, // port of RabbitMQ server  
+>  "VirtualHost": "HEX", // virtual host on RabbitMQ server  
+>  "UserName": "adm", // user name used to access of RabbitMQ server  
+>  "Password": "test", // password used to access of RabbitMQ server  
+>  "DebugFile": "log.txt",   // Debug file  
+>  "InQueue": "INDLMS", // Queue on server which is monitored for incoming commands  
+>  "OutQueue": "OUTDLMS" // Queue on server where data are put  
 > }
 
 3. Starting 10.000 of emulator instances
 
-> #!/bin/bash
-> mkdir "simulator_logs"
-> for i in {20000..20050}
-> do
->    nohup ./Gurux.DLMS.Simulator.Net -i WRAPPER -N 1 -p $i -t Verbose -x mir.xml > simulator_logs/$i &
-> done
+> #!/bin/bash  
+> mkdir "simulator_logs"  
+> for i in {20000..20050}  
+> do  
+>    nohup ./Gurux.DLMS.Simulator.Net -i WRAPPER -N 1 -p $i -t Verbose -x mir.xml > simulator_logs/$i &  
+> done  
 
 4. Starting DLMS2AMPQ daemon
 
@@ -162,23 +162,23 @@ dump replies from out queue
 
 5. Test sending reading request
 
-> #!/bin/bash
-> mkdir "requests"
-> for i in {20000..20050}
-> do
-> read -r -d '' MSG << EOM
-> {
->  "MsgID": "$i",
->  "Cmd": "READ",
->  "ObisCode": "1.0.99.1.0.255",
->  "ConnectionString": "-h 127.0.0.1 -p $i -c 32 -a Low -i WRAPPER -P 00000000",
->  "dtFrom": "2020-12-15T00:00:00.00+03:00",
->   "dtTo": "2020-12-16T00:00:00.00+03:00"
-> }
-> EOM
-> echo $MSG > "requests/$i"
-> DLMS2AMPQ send requests/$i
-> done
+> #!/bin/bash  
+> mkdir "requests"  
+> for i in {20000..20050}  
+> do  
+> read -r -d '' MSG << EOM  
+> {  
+>  "MsgID": "$i",  
+>  "Cmd": "READ",  
+>  "ObisCode": "1.0.99.1.0.255",  
+>  "ConnectionString": "-h 127.0.0.1 -p $i -c 32 -a Low -i WRAPPER -P 00000000",  
+>  "dtFrom": "2020-12-15T00:00:00.00+03:00",  
+>   "dtTo": "2020-12-16T00:00:00.00+03:00"  
+> }  
+> EOM  
+> echo $MSG > "requests/$i"  
+> DLMS2AMPQ send requests/$i  
+> done  
 
 6. Read replies 
 
