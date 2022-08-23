@@ -16,11 +16,11 @@ send request from file to input queue
 3. 
 > DLMS2AMPQ dump 
 
-dump replyes from out queue
+dump replies from out queue
 
 ### Configuration json
->
-{
+
+> {
   "HostName": "172.17.230.131",  // hostname of RabbitMQ server
   "Port": 5672, // port of RabbitMQ server
   "VirtualHost": "HEX", // virtual host on RabbitMQ server
@@ -33,8 +33,8 @@ dump replyes from out queue
 
 
 ### **Format of message with commands**
->
-{
+
+> {
   "MsgID": "1443", // - unique message id - will be put into reply
   "Cmd": "READ", // command - at the moment only READ supported
   "ObisCode": "1.0.99.1.0.255", // - OBIS code to request
@@ -45,8 +45,8 @@ dump replyes from out queue
 
 
 ### **Format of Reply**/
->
-{
+
+> {
   "InMsgID": "1443", // - request message id 
   "MsgID": "ba21630b-07af-43b1-b286-54b94f61b268", // unique message id of reply 
   "Status": "ok", // statu - ok or notok
@@ -66,8 +66,8 @@ dump replyes from out queue
 }
 
 ### ** Example of error message ** 
->
-{
+
+> {
   "InMsgID": "1443",
   "MsgID": "344eb4be-6e2e-4e9f-8c52-f41e8fef90fc",
   "Status": "notok",
@@ -77,8 +77,7 @@ dump replyes from out queue
 
 ## Connection settings (parameter ConnectionString in request command )
 
-Example:  -h [Meter IP Address] -p [Meter Port No] -c 16 -s 1 -r SN
-
+>             Example:  -h [Meter IP Address] -p [Meter Port No] -c 16 -s 1 -r SN
              -h host name or IP address.
              -p  port number or name (Example: 1000).
              -S [COM1:9600:8None1] serial port.
@@ -113,16 +112,13 @@ Example:  -h [Meter IP Address] -p [Meter Port No] -c 16 -s 1 -r SN
              -W  General Block Transfer window size.
              -w  HDLC Window size. Default is 1
              -f  HDLC Frame size. Default is 128
-             -L  Manufacturer ID (Flag ID) is used to use manufacturer depending functionality. -L LGZ
+             -L  Manufacturer ID (Flag ID) is used to use manufacturer depending functionality. -L LGZ            
             
-            Examples:
-
+>            Examples:
             Read LG device using TCP/IP connection.
             -r SN -c 16 -s 1 -h [Meter IP Address] -p [Meter Port No]
-
             Read LG device using serial port connection.
             -r SN -c 16 -s 1 -sp COM1
-
             Read Indian device using serial port connection.
             -S COM1 -c 16 -s 1 -a Low -P [password]
 
@@ -130,18 +126,17 @@ Example:  -h [Meter IP Address] -p [Meter Port No] -c 16 -s 1 -r SN
 
 1. Setup RabbitMQ
 
-apt install rabbitmq-server
-
-rabbitmq-plugins enable rabbitmq_management
-rabbitmqctl add_user adm test
-rabbitmqctl set_user_tags adm administrator
-rabbitmqctl add_vhost HEX
-rabbitmqctl set_permissions -p HEX adm ".*" ".*" ".*"
+- apt install rabbitmq-server
+- rabbitmq-plugins enable rabbitmq_management
+- rabbitmqctl add_user adm test
+- rabbitmqctl set_user_tags adm administrator
+- rabbitmqctl add_vhost HEX
+- rabbitmqctl set_permissions -p HEX adm ".*" ".*" ".*"
 
 
 2. Setup configuration for DLMS2AMPQ
 
-{
+> {
   "HostName": "172.17.230.131",  // hostname of RabbitMQ server
   "Port": 5672, // port of RabbitMQ server
   "VirtualHost": "HEX", // virtual host on RabbitMQ server
@@ -154,21 +149,22 @@ rabbitmqctl set_permissions -p HEX adm ".*" ".*" ".*"
 
 3. Starting 10.000 of emulator instances
 
-#!/bin/bash
-for i in {20000..30000}
+> #!/bin/bash
+mkdir "simulator_logs"
+for i in {20000..20050}
 do
    nohup ./Gurux.DLMS.Simulator.Net -i WRAPPER -N 1 -p $i -t Verbose -x mir.xml > simulator_logs/$i &
 done
 
 4. Starting DLMS2AMPQ daemon
 
-DLMS2AMPQ
+> DLMS2AMPQ
 
 5. Test sending reading request
 
-#!/bin/bash
+> #!/bin/bash
 mkdir "requests"
-for i in {20000..30000}
+for i in {20000..20050}
 do
 read -r -d '' MSG << EOM
 {
@@ -186,9 +182,26 @@ done
 
 6. Read replies 
 
-DLMS2AMPQ dump
+> DLMS2AMPQ dump
 
 7. Review throughput parameters in rabbitmq
 
 
+http://127.0.0.1:15672/#/
+
+Input
+
+![image](https://user-images.githubusercontent.com/51874217/186081763-cac95302-b0bb-493d-92d4-9052e01f1a84.png)
+
+Output
+
+![image](https://user-images.githubusercontent.com/51874217/186083138-2c993731-0bfa-4162-bfd0-e75394f1caca.png)
+
+
 Sources of Gurux included ( modified to exclude some parts as nuget packages , target net60 ) , also included image for simulator - mir.xml
+
+### Additional usefull commands
+
+> killall Gurux.DLMS.Simulator.Net
+
+
