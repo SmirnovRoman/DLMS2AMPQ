@@ -410,7 +410,7 @@ namespace DLMS2AMPQ
 
         static void ShowHelp()
         {
-            
+            //TODO: return on HELP command
         }
     }
 }

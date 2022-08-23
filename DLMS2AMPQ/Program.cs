@@ -18,6 +18,9 @@ using Microsoft.Extensions.Options;
 
 namespace DLMS2AMPQ{
 
+/// <summary>
+/// Daemon settings
+/// </summary>
 [Serializable]
 public class DaemonSettings {
     public string HostName = "127.0.0.1";
@@ -48,6 +51,9 @@ public class DaemonSettings {
     }
 }
 
+/// <summary>
+/// Class to pack requests 
+/// </summary>
 [Serializable]
 public class MQTTRequest{
     
@@ -62,7 +68,7 @@ public class MQTTRequest{
     public MQTTRequest(){
         MsgID="1443";
         Cmd="READ";
-        //профили
+        //profiles
         ObisCode="1.0.99.1.0.255";        
         ConnectionString="-S COM4 -c 32 -s 16383 -l 1 -a Low -P 00000000 -t Verbose";
         dtFrom=DateTime.Now.AddDays(-5);
@@ -70,14 +76,18 @@ public class MQTTRequest{
     }
 }
 
-
+/// <summary>
+/// Data record
+/// </summary>
 [Serializable] public class DataRecord{
     public string DateTime {get;set;}
     public string Code {get;set;}
     public string Value {get;set;}
 }
 
-
+/// <summary>
+/// Class for packing Reply 
+/// </summary>
 [Serializable]
 public class MQTTReply{
     
@@ -340,6 +350,9 @@ public static string Object2Json(object o){
     }   
 }
 
+/// <summary>
+/// Not used
+/// </summary>
 public class DaemonConfig 
      {
          public string DaemonName { get; set; } 
