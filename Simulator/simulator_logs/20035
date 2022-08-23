@@ -1,0 +1,20 @@
+DLMS WRAPPER Logical Name simulator start in ports 20035-20035.
+Server address: 1
+Associations:
+++++++++++++++++++++++++++++
+Client address: 32 Low authentication, password 00000000
+ Conformance:
+BlockTransferWithGetOrRead, BlockTransferWithSetOrWrite, BlockTransferWithAction, MultipleReferences, Get, Set, SelectiveAccess, Action
+ MaxReceivePduSize: 1064 MaxSendPduSize: 1064
+
+ Security suite: Suite0
+ Security policy: None
+ Authentication key: D0 D1 D2 D3 D4 D5 D6 D7 D8 D9 DA DB DC DD DE DF
+ Block cipher key: 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+ Broadcast block cipher key: 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+
+Cannot read keys when either application does not have a console or when console input has been redirected. Try Console.Read.
+Waiting 00:01:11 before next execution.
+Waiting 00:59:59 before next execution.
+TCP/IP connection established.
+TCP/IP connection closed.
