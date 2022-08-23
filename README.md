@@ -147,11 +147,11 @@ dump replies from out queue
 >  "OutQueue": "OUTDLMS" // Queue on server where data are put  
 > }
 
-3. Starting 10.000 of emulator instances
+3. Starting 50 instances of emulator
 
 > #!/bin/bash  
 > mkdir "simulator_logs"  
-> for i in {20000..20050}  
+> for i in {20000..20049}  
 > do  
 >    nohup ./Gurux.DLMS.Simulator.Net -i WRAPPER -N 1 -p $i -t Verbose -x mir.xml > simulator_logs/$i &  
 > done  
@@ -164,7 +164,7 @@ dump replies from out queue
 
 > #!/bin/bash  
 > mkdir "requests"  
-> for i in {20000..20050}  
+> for i in {20000..20049}  
 > do  
 > read -r -d '' MSG << EOM  
 > {  
