@@ -1,0 +1,10 @@
+{
+  "HostName": "127.0.0.1",
+  "Port": 5672,
+  "VirtualHost": "HEX",
+  "UserName": "adm",
+  "Password": "test",
+  "DebugFile": "log.txt",
+  "InQueue": "INDLMS",
+  "OutQueue": "OUTDLMS"
+}
