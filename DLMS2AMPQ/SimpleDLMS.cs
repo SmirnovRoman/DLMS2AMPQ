@@ -2067,7 +2067,7 @@ namespace DLMS2AMPQ
                 */                
                 //GXDLMSProfileGeneric pg = new GXDLMSProfileGeneric("1.0.94.7.0.255");
                 GXDLMSProfileGeneric pg = new GXDLMSProfileGeneric(obis);
-                //Read capture objects.
+                //Capture objects.
                 Read(pg, 3);
                 //ReadRowsByEntry(pg,0,100);
                 ReadRowsByRange(pg, dtFrom, dtTo);
